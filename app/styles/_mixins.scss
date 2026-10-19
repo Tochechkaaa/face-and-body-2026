@@ -1,0 +1,62 @@
+// ============================================================
+// Міксини. Використання:  @use "mixins" as *;
+// ============================================================
+@use "variables" as *;
+
+// Мобілка (max-width). Основний брейк проєкту.
+@mixin mobile {
+  @media (max-width: #{$bp-mobile - 1px}) {
+    @content;
+  }
+}
+
+// Планшет і нижче.
+@mixin tablet {
+  @media (max-width: #{$bp-tablet - 1px}) {
+    @content;
+  }
+}
+
+// Центрований контейнер з максимальною шириною й бічними відступами.
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-pad-desktop;
+
+  @include tablet {
+    padding-inline: 40px;
+  }
+
+  @include mobile {
+    padding-inline: $container-pad;
+  }
+}
+
+// Текст з бордовим градієнтом (цифри, ціни, час).
+@mixin gradient-text {
+  background: $gradient-burgundy;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+// Заголовок секції (58px desktop / 32px mobile).
+@mixin section-title {
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: 58px;
+  line-height: 62.6px;
+  letter-spacing: -0.027em;
+  color: rgba(48, 35, 38, 0.98);
+
+  @include tablet {
+    font-size: 46px;
+    line-height: 1.1;
+  }
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}

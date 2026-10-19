@@ -1,0 +1,147 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.about {
+  padding: 120px 0 114px;
+
+  @include mobile {
+    padding: 100px 0 80px;
+  }
+}
+
+.inner {
+  @include container;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 572px;
+  gap: 40px;
+  padding-bottom: 42px;
+  border-bottom: 1px solid $color-line;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.title {
+  @include section-title;
+
+  max-width: 584px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 18px;
+  line-height: normal;
+  color: $color-muted;
+
+  @include mobile {
+    gap: 19px;
+    font-size: 16px;
+  }
+}
+
+// --- Статистика --------------------------------------------------
+.stats {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+
+  @include tablet {
+    gap: 32px;
+  }
+
+  @include mobile {
+    margin-top: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid $color-line;
+  }
+}
+
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 114px;
+  text-transform: uppercase;
+
+  // вертикальний розділювач праворуч
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 114px;
+    background: $color-line;
+  }
+
+  @include mobile {
+    align-items: center;
+    gap: 0;
+    min-height: 0;
+    padding: 0 8px 20px;
+    text-align: center;
+
+    &::after {
+      top: 21px;
+      height: 58px;
+    }
+
+    // ліва лінія для лівої колонки
+    &:nth-child(odd)::before {
+      content: "";
+      position: absolute;
+      top: 21px;
+      left: 0;
+      width: 1px;
+      height: 58px;
+      background: $color-line;
+    }
+  }
+}
+
+.value {
+  @include gradient-text;
+
+  font-family: $font-serif;
+  font-size: 72px;
+  line-height: 72px;
+  letter-spacing: -0.04em;
+
+  @include tablet {
+    font-size: 56px;
+    line-height: 64px;
+  }
+
+  @include mobile {
+    font-size: 32px;
+    line-height: 72px;
+  }
+}
+
+.label {
+  font-size: 13px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  color: $color-muted-2;
+
+  @include mobile {
+    margin-top: -15px;
+    font-size: 10px;
+  }
+}

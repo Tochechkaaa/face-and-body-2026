@@ -1,0 +1,205 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.program {
+  padding: 0 0 120px;
+
+  @include mobile {
+    padding-bottom: 100px;
+  }
+}
+
+.head {
+  @include container;
+}
+
+.title {
+  @include section-title;
+
+  margin-bottom: 45px;
+
+  @include mobile {
+    margin-bottom: 24px;
+  }
+}
+
+.dayBar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-text-dark;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #f3ecdf;
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+// чергування фону рядків (непарні — бежеві); у продовженні 1-го дня
+// парність зсувається, бо PREVIEW_COUNT парний — лишаємо той самий порядок.
+.row {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr) 295px;
+  padding: 42px 110px 42px 100px;
+  border-bottom: 1px solid rgba(39, 39, 39, 0.23);
+  color: $color-text-dark;
+
+  &:nth-child(odd) {
+    background: $color-card;
+  }
+
+  @include tablet {
+    grid-template-columns: 150px minmax(0, 1fr) 240px;
+    padding-inline: 40px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 32px 16px;
+    border-bottom: 0;
+  }
+}
+
+.time {
+  border-right: 1px solid $color-border;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  span {
+    @include gradient-text;
+  }
+
+  @include mobile {
+    padding-bottom: 8px;
+    border-right: 0;
+    border-bottom: 0.5px solid $color-border;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+}
+
+.topic {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  @include mobile {
+    padding: 0 0 16px;
+    border-bottom: 0.5px solid $color-border;
+  }
+}
+
+.topicTitle {
+  max-width: 687px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  text-transform: uppercase;
+
+  @include mobile {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+}
+
+.topicSub {
+  font-size: 16px;
+  line-height: 1.2;
+
+  @include mobile {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+.speakers {
+  padding-left: 24px;
+  border-left: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include mobile {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+.speaker {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.speakerName {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.1;
+  text-transform: uppercase;
+
+  @include mobile {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+}
+
+.speakerBio {
+  font-size: 16px;
+  line-height: 1.2;
+
+  @include mobile {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+// --- Розгортання повної програми ---------------------------------
+.more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.moreOpen {
+  grid-template-rows: 1fr;
+}
+
+.moreInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.actions {
+  @include container;
+
+  margin-top: 44px;
+  display: flex;
+  justify-content: center;
+
+  @include mobile {
+    margin-top: 24px;
+  }
+}
+
+.toggle {
+  min-width: 248px;
+
+  @include mobile {
+    width: 100%;
+  }
+}

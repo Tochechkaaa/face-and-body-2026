@@ -1,0 +1,45 @@
+// ============================================================
+// Дизайн-токени FACE&BODY 2026. Значення зчитані з Figma.
+// Використання в модулях:  @use "variables" as *;
+// ============================================================
+
+// --- Кольори ----------------------------------------------------
+$color-bg: #f3ecdf; // фон сторінки
+$color-text: #302326; // основний темний текст
+$color-text-dark: #332629; // текст програми / смуга дати
+$color-muted: #6c5c58; // описи
+$color-muted-2: #70615b; // підписи статистики
+$color-cream: #f8efe2; // світла кнопка
+$color-cream-2: #faf4e7; // світлі картки (спікери, квитки)
+$color-card: #ede3d2; // бежеві картки / смуги
+$color-border: #c8b69c; // рамки карток
+$color-line: #d0bea6; // розділювачі
+$color-gold: #e1c799; // золоті акценти
+$color-light-text: #ede3d2; // текст на бордовому
+$color-burgundy: #742636;
+$color-burger-bg: #150407;
+$color-white: #ffffff;
+
+// Бордовий градієнт (Figma: bg-gradient-to-l from #712f3b to #451a22)
+$gradient-burgundy: linear-gradient(270deg, #712f3b 0%, #451a22 100%);
+
+// --- Типографіка ------------------------------------------------
+//   --font-body    → Cera Pro (фолбек Jost, поки немає файлів Cera)
+//   --font-serif   → Georgia (системний)
+//   --font-button  → Fixel Text Medium (кнопки)
+$font-body: var(--font-body), "Cera Pro", system-ui, sans-serif;
+$font-serif: Georgia, "Times New Roman", serif;
+$font-button: var(--font-button), system-ui, sans-serif;
+
+// --- Сітка / розкладка ------------------------------------------
+$container-max: 1440px;
+$container-pad-desktop: 100px;
+$container-pad: 16px;
+
+// --- Брейкпоінти ------------------------------------------------
+$bp-mobile: 768px; // desktop / mobile межа
+$bp-tablet: 1200px;
+
+// --- Z-index ----------------------------------------------------
+$z-header: 100;
+$z-menu: 90;

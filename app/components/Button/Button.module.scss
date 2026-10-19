@@ -1,0 +1,79 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 47px;
+  padding: 11.5px 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  font-family: $font-button;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+
+  // Шар для плавної зміни градієнта (градієнт не анімується через background).
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::before,
+  &:focus-visible::before {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-gold;
+    outline-offset: 2px;
+  }
+}
+
+// Кремова → бордова
+.light {
+  background-color: $color-cream;
+  color: #461a23;
+
+  &::before {
+    background: $gradient-burgundy;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $color-cream-2;
+  }
+}
+
+// Бордова → золота (текст стає бордовим градієнтом)
+.dark {
+  background: $gradient-burgundy;
+  color: #f3ecdf;
+
+  &::before {
+    background: $color-gold;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #5a232e;
+  }
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}

@@ -1,0 +1,41 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+  color: #fbf2e5;
+  white-space: nowrap;
+
+  @include mobile {
+    gap: 6px;
+    font-size: 10px;
+    line-height: 13px;
+  }
+}
+
+.calendar {
+  width: 17px;
+  height: 18px;
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 13px;
+    height: 14px;
+  }
+}
+
+.emily {
+  width: 76px;
+  height: 27px;
+  flex-shrink: 0;
+
+  @include mobile {
+    width: 46px;
+    height: 16px;
+  }
+}

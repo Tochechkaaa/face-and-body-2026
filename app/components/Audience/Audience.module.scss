@@ -1,0 +1,144 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.audience {
+  padding: 120px 0 120px;
+  overflow: hidden;
+
+  @include mobile {
+    padding: 100px 0 100px;
+  }
+}
+
+.inner {
+  @include container;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 525px;
+  grid-template-rows: auto 1fr;
+  column-gap: 40px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+}
+
+.intro {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  @include section-title;
+}
+
+.text {
+  margin-top: 17px;
+  max-width: 372px;
+  font-size: 17px;
+  line-height: 26.4px;
+  letter-spacing: -0.027em;
+  color: rgba(112, 97, 91, 0.98);
+
+  @include mobile {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+// Туз чирва (Figma: Heart portrait card, нахил −15.5°)
+.card {
+  position: absolute;
+  left: 380px;
+  top: 74px;
+  width: 280px;
+  transform: rotate(-15.51deg);
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  @include tablet {
+    left: auto;
+    right: calc(50% + 20px);
+    top: 160px;
+    width: 220px;
+  }
+
+  @include mobile {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    width: 192px;
+    margin: 0 -24px 24px auto;
+  }
+}
+
+.list {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin-top: 77px;
+  display: flex;
+  flex-direction: column;
+
+  @include mobile {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 0;
+  }
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 85px 1fr;
+  align-items: baseline;
+  padding: 0 0 22px;
+  border-bottom: 1px solid $color-border;
+
+  & + & {
+    padding-top: 22px;
+  }
+
+  @include mobile {
+    padding-bottom: 14px;
+
+    & + & {
+      padding-top: 14px;
+    }
+  }
+}
+
+.num {
+  @include gradient-text;
+
+  font-family: $font-serif;
+  font-size: 18px;
+  line-height: 1.2;
+
+  @include mobile {
+    font-size: 12px;
+  }
+}
+
+.label {
+  font-size: 23px;
+  line-height: 26.4px;
+  letter-spacing: -0.027em;
+  color: $color-text;
+
+  @include mobile {
+    font-size: 18px;
+  }
+}

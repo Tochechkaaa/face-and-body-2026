@@ -1,0 +1,209 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.deck {
+  background: linear-gradient(58.47deg, #391219 45.15%, #742636 97.66%);
+  color: $color-light-text;
+  overflow: hidden;
+
+  @include mobile {
+    background: linear-gradient(80.52deg, #391219 45.15%, #742636 97.66%);
+  }
+}
+
+.inner {
+  @include container;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 126px;
+  padding-bottom: 121px;
+  text-align: center;
+
+  @include mobile {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+.ornament {
+  width: 141px;
+  height: 24px;
+
+  @include mobile {
+    height: 20px;
+  }
+}
+
+.title {
+  margin-top: 42px;
+  font-size: 58px;
+  line-height: 62.6px;
+  letter-spacing: -0.027em;
+
+  @include mobile {
+    margin-top: 24px;
+    max-width: 230px;
+    font-size: 32px;
+    line-height: 34px;
+  }
+}
+
+.subtitle {
+  margin-top: 27px;
+  font-family: $font-serif;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: $color-gold;
+
+  @include mobile {
+    margin-top: 8px;
+    font-size: 28px;
+  }
+}
+
+.text {
+  margin-top: 23px;
+  font-size: 18px;
+  line-height: 28px;
+
+  @include mobile {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 300px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+// --- Карти -------------------------------------------------------
+.cards {
+  position: relative; // offsetParent для вимірювання позицій карт
+  margin-top: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+
+  @include tablet {
+    gap: 8px;
+  }
+
+  @include mobile {
+    margin-top: 36px;
+    flex-wrap: wrap;
+    gap: 0 16px;
+    max-width: 343px;
+  }
+}
+
+.card {
+  --r: var(--rot);
+
+  position: relative;
+  flex: 0 1 196px;
+  min-width: 0;
+  transform: rotate(var(--r));
+
+  img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(21, 4, 7, 0.25));
+  }
+
+  // технологія трохи нижче (у макеті карта без нахилу опущена на 12px)
+  &:nth-child(3) {
+    margin-top: 12px;
+  }
+
+  @include mobile {
+    --r: var(--rot-m);
+
+    flex-basis: 103px;
+
+    // ряд 1: face, technology, body; ряд 2: science, practice
+    &:nth-child(1) {
+      order: 1;
+    }
+    &:nth-child(3) {
+      order: 2;
+    }
+    &:nth-child(2) {
+      order: 3;
+    }
+    &:nth-child(4) {
+      order: 4;
+      margin-top: -16px;
+    }
+    &:nth-child(5) {
+      order: 5;
+      margin-top: -16px;
+    }
+  }
+}
+
+// Technology лежить зверху колоди
+.cardTop {
+  z-index: 2;
+}
+
+// --- Фази анімації (data-phase на списку) -------------------------
+// init  — до гідрації/вимірювання: ховаємо, щоб не було стрибка
+// stack — колода по центру (Figma 5166:585 / 5135:2021)
+// dealt — карти роздаються на свої місця по черзі
+// idle  — карти повільно погойдуються кожна у своєму ритмі
+.cards[data-phase="init"] .card {
+  opacity: 0;
+}
+
+.cards[data-phase="stack"] .card {
+  transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--r));
+  transition: opacity 0.4s ease;
+}
+
+.cards[data-phase="dealt"] .card {
+  transition: transform var(--deal-dur) cubic-bezier(0.22, 1, 0.36, 1) var(--deal-delay);
+}
+
+@keyframes card-float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(2px, -6px) rotate(1.2deg);
+  }
+  66% {
+    transform: translate(-2px, -2px) rotate(-0.8deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.cards[data-phase="idle"] .float {
+  animation: card-float var(--float-dur) ease-in-out var(--float-delay) infinite;
+}
+
+// Ховер — окремий шар, щоб не конфліктувати з роздачею та погойдуванням
+.lift {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+  .card:hover & {
+    transform: translateY(-14px);
+
+    @include mobile {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards[data-phase] .float {
+    animation: none;
+  }
+}

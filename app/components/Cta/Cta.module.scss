@@ -1,0 +1,183 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.cta {
+  position: relative;
+  z-index: 1;
+  min-height: 790px;
+  overflow-x: clip; // світіння ширше за екран; по вертикалі карти можуть виходити за край
+  background: #3a0f18;
+  color: $color-light-text;
+
+  @include mobile {
+    min-height: 636px;
+    overflow: hidden;
+  }
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    left: -10.94%;
+    top: 0;
+    width: 126.17%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @include mobile {
+    img {
+      left: 0;
+      width: 100%;
+      object-position: bottom;
+    }
+  }
+}
+
+// Розмите світло під заголовком (Figma: Ellipse 4)
+.glow {
+  position: absolute;
+  left: calc(50% - 880px);
+  top: -357px;
+  width: 1635px;
+  max-width: none;
+  height: 1573px;
+  pointer-events: none;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.cardsRight {
+  position: absolute;
+  right: 0;
+  top: 132px;
+  width: 15.2%; // 219 / 1440
+  height: 727px;
+  overflow: hidden;
+  pointer-events: none;
+
+  img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: auto;
+    max-width: none;
+  }
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.inner {
+  @include container;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+  padding-bottom: 121px;
+  text-align: center;
+
+  @include mobile {
+    padding-top: 103px;
+    padding-bottom: 100px;
+  }
+}
+
+.ornament {
+  width: 141px;
+  height: 24px;
+
+  @include mobile {
+    height: 20px;
+  }
+}
+
+.title {
+  margin-top: 42px;
+  font-size: 58px;
+  line-height: 62.6px;
+  letter-spacing: -0.027em;
+
+  @include mobile {
+    margin-top: 24px;
+    font-size: 40px;
+    line-height: 50px;
+  }
+}
+
+.subtitle {
+  font-family: $font-serif;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #f2ebdf;
+
+  @include mobile {
+    font-size: 26px;
+  }
+}
+
+.meta {
+  margin-top: 12px;
+}
+
+.text {
+  margin-top: 13px;
+  font-size: 16px;
+  line-height: 22px;
+  color: $color-gold;
+}
+
+.big {
+  margin-top: 46px;
+  max-width: 740px;
+  font-size: 70px;
+  line-height: 88px;
+  letter-spacing: -0.027em;
+
+  em {
+    display: block;
+    font-family: $font-serif;
+    font-style: italic;
+    color: $color-gold;
+    letter-spacing: -0.007em;
+  }
+
+  @include tablet {
+    font-size: 56px;
+    line-height: 72px;
+  }
+
+  @include mobile {
+    margin-top: 48px;
+    max-width: 280px;
+    font-size: 34px;
+    line-height: 42px;
+
+    em {
+      letter-spacing: -0.03em;
+    }
+  }
+}
+
+.button {
+  margin-top: 26px;
+  width: 165px;
+
+  @include mobile {
+    width: 100%;
+    margin-top: 21px;
+  }
+}

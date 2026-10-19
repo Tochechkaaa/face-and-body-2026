@@ -1,0 +1,206 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: $z-header;
+}
+
+.inner {
+  @include container;
+
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  height: 85px;
+
+  // Темна «скляна» смуга хедера (Figma: Rectangle 150)
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 calc(50% - 50vw);
+    z-index: -1;
+    background: url("/images/header/bar.png") center / cover no-repeat;
+  }
+
+  @include mobile {
+    height: 69px;
+
+    &::before {
+      background-image: url("/images/mobile/header-bg.png");
+    }
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+  display: block;
+}
+
+.logoDesktop {
+  width: 136px;
+  height: 50px;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.logoMobile {
+  display: none;
+  width: 107px;
+  height: 40px;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+// --- Десктоп-навігація -------------------------------------------
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 32px);
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.navLink {
+  position: relative;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: $color-gold;
+  transition: color 0.2s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #f7eee1;
+
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  @include tablet {
+    font-size: 13px;
+  }
+}
+
+// --- Бургер (тільки мобілка) -------------------------------------
+.burger {
+  display: none;
+  width: 24px;
+  height: 24px;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @include mobile {
+    display: block;
+  }
+}
+
+// --- Мобільне меню (Figma: «бургер») -----------------------------
+.menu {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    padding: 115px 24px 40px;
+    overflow-y: auto;
+    background: $color-burger-bg;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+}
+
+.menuOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.menuLink {
+  font-size: 18px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: #f7eee1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.2s ease;
+
+  .menuOpen & {
+    opacity: 1;
+    transform: none;
+  }
+
+  @for $i from 1 through 8 {
+    .menuOpen &:nth-child(#{$i}) {
+      transition-delay: #{0.04s * $i};
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $color-gold;
+  }
+}
+
+// Суцільний фон після прокрутки
+.inner::after {
+  content: "";
+  position: absolute;
+  inset: 0 calc(50% - 50vw);
+  z-index: -1;
+  background: rgba(21, 4, 7, 0.94);
+  box-shadow: 0 6px 24px rgba(21, 4, 7, 0.18);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.headerScrolled .inner::after {
+  opacity: 1;
+}
+
+.headerOpen .inner::before {
+  // у відкритому меню смуга зливається з фоном меню
+  background: $color-burger-bg;
+}
