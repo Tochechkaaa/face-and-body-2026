@@ -2,8 +2,9 @@ import type { NextConfig } from "next";
 import path from "node:path";
 
 const nextConfig: NextConfig = {
-  // Hostinger запускає .next/standalone/server.js як вхідний файл.
-  output: "standalone",
+  // На Hostinger оптимізація через sharp вбиває процес (ліміти пам'яті/потоків),
+  // тож картинки віддаються з public як є.
+  images: { unoptimized: true },
   sassOptions: {
     // Дозволяє в будь-якому .module.scss писати `@use "variables" as *;`
     // замість довгих відносних шляхів на app/styles.
