@@ -10,7 +10,7 @@ import styles from "./Deck.module.scss";
 // stack / stackM — зсув карти в колоді відносно центральної (Figma: 5166:585 / 5135:2021), px.
 // order — черга роздачі: спершу крайні карти, потім ближчі до центру (Technology не рухається).
 const CARDS = [
-  { src: "/images/cards/face.png", alt: "Face", rot: 8, rotM: 8, stack: [-25, 12], stackM: [9, -6], order: 0 },
+  { src: "/images/cards/face.webp", alt: "Face", rot: 8, rotM: 8, stack: [-25, 12], stackM: [9, -6], order: 0 },
   { src: "/images/cards/body.png", alt: "Body", rot: 4, rotM: -8, stack: [-22, 13], stackM: [11, 8], order: 2 },
   { src: "/images/cards/technology.png", alt: "Technology", rot: 0, rotM: 0, stack: [0, 0], stackM: [0, 0], order: -1 },
   { src: "/images/cards/science.png", alt: "Science", rot: -4, rotM: 8, stack: [49, 27], stackM: [13, 31], order: 3 },

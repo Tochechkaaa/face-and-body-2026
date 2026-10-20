@@ -12,7 +12,7 @@ export function Venue() {
           <div className={styles.back} />
           <div className={styles.photo}>
             <Image
-              src="/images/venue/resort.png"
+              src="/images/venue/resort.webp"
               alt="Emily Resort, Львів"
               fill
               sizes="(max-width: 767px) 330px, 572px"

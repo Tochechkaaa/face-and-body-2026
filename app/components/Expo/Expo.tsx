@@ -7,8 +7,8 @@ export function Expo() {
       <div className={styles.inner}>
         <div className={styles.card}>
           <picture className={styles.bg}>
-            <source media="(max-width: 767px)" srcSet="/images/mobile/expo-bg.png" />
-            <img src="/images/expo/bg.png" alt="" loading="lazy" />
+            <source media="(max-width: 767px)" srcSet="/images/mobile/expo-bg.webp" />
+            <img src="/images/expo/bg.webp" alt="" loading="lazy" />
           </picture>
           <div className={styles.shade} />
           <div className={styles.frame} />
@@ -24,10 +24,10 @@ export function Expo() {
           </div>
 
           <div className={styles.photo}>
-            <Image src="/images/expo/photo.png" alt="Шоу-програма FACE&BODY" fill sizes="342px" />
+            <Image src="/images/expo/photo.webp" alt="Шоу-програма FACE&BODY" fill sizes="342px" />
           </div>
           <div className={styles.photoMobile}>
-            <Image src="/images/mobile/expo-photo.png" alt="Шоу-програма FACE&BODY" fill sizes="184px" />
+            <Image src="/images/mobile/expo-photo.webp" alt="Шоу-програма FACE&BODY" fill sizes="184px" />
           </div>
         </div>
       </div>

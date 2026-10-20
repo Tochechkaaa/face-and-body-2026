@@ -26,7 +26,7 @@ export function Audience() {
 
         <div className={styles.card}>
           <Image
-            src="/images/audience/heart-card.png"
+            src="/images/audience/heart-card.webp"
             alt="Туз чирва з портретом"
             width={280}
             height={420}

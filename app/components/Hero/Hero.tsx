@@ -39,8 +39,8 @@ export function Hero() {
   return (
     <section className={styles.hero} id="top" ref={sectionRef}>
       <picture className={styles.bg}>
-        <source media="(max-width: 767px)" srcSet="/images/mobile/hero-bg.jpg" />
-        <img src="/images/hero/bg.png" alt="" fetchPriority="high" />
+        <source media="(max-width: 767px)" srcSet="/images/mobile/hero-bg.webp" />
+        <img src="/images/hero/bg.webp" alt="" fetchPriority="high" />
       </picture>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className={styles.glow} src="/images/hero/glow.svg" alt="" width={1683} height={1683} />

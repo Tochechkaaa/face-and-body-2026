@@ -11,7 +11,7 @@ const SPEAKERS = Array.from({ length: 8 }, (_, i) => ({
   name: "Даша Квіткова",
   role: "Спікер",
   topic: "Тема",
-  photo: "/images/speakers/speaker.png",
+  photo: "/images/speakers/speaker.webp",
 }));
 
 // На мобілці спочатку видно 4 картки, решта — по кнопці «Більше спікерів».

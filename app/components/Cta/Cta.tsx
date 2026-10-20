@@ -7,15 +7,15 @@ export function Cta() {
   return (
     <section className={styles.cta}>
       <picture className={styles.bg}>
-        <source media="(max-width: 767px)" srcSet="/images/mobile/cta-bg.png" />
-        <img src="/images/cta/bg.png" alt="" loading="lazy" />
+        <source media="(max-width: 767px)" srcSet="/images/mobile/cta-bg.webp" />
+        <img src="/images/cta/bg.webp" alt="" loading="lazy" />
       </picture>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className={styles.glow} src="/images/cta/glow.svg" alt="" loading="lazy" />
       {/* Праві карти «виходять» за нижній край секції на футер */}
       <div className={styles.cardsRight} aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/cta/cards-right.png" alt="" loading="lazy" />
+        <img src="/images/cta/cards-right.webp" alt="" loading="lazy" />
       </div>
 
       <div className={styles.inner}>
