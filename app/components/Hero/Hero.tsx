@@ -38,16 +38,19 @@ export function Hero() {
 
   return (
     <section className={styles.hero} id="top" ref={sectionRef}>
-      <picture className={styles.bg}>
-        <source media="(max-width: 767px)" srcSet="/images/mobile/hero-bg.webp" />
-        <img src="/images/hero/bg.webp" alt="" fetchPriority="high" />
-      </picture>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className={styles.glow} src="/images/hero/glow.svg" alt="" width={1683} height={1683} />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className={`${styles.glowMobile} ${styles.glowMobile1}`} src="/images/mobile/glow.svg" alt="" />
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className={`${styles.glowMobile} ${styles.glowMobile2}`} src="/images/mobile/glow.svg" alt="" />
+      {/* Фон обрізається окремо, щоб плашка sold out могла виходити за низ секції */}
+      <div className={styles.backdrop}>
+        <picture className={styles.bg}>
+          <source media="(max-width: 767px)" srcSet="/images/mobile/hero-bg.webp" />
+          <img src="/images/hero/bg.webp" alt="" fetchPriority="high" />
+        </picture>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className={styles.glow} src="/images/hero/glow.svg" alt="" width={1683} height={1683} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className={`${styles.glowMobile} ${styles.glowMobile1}`} src="/images/mobile/glow.svg" alt="" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className={`${styles.glowMobile} ${styles.glowMobile2}`} src="/images/mobile/glow.svg" alt="" />
+      </div>
 
       <div className={styles.inner}>
         <EventMeta className={styles.meta} />
@@ -78,6 +81,16 @@ export function Hero() {
           </Button>
           <Image className={styles.badge} src="/images/hero/bpr.png" alt="8 балів БПР" width={162} height={100} />
         </div>
+      </div>
+
+      <div className={styles.stampLayer}>
+        <Image
+          className={styles.stamp}
+          src="/images/hero/sold-out-gold.png"
+          alt="Sold out: Simple + VIP"
+          width={1320}
+          height={640}
+        />
       </div>
     </section>
   );

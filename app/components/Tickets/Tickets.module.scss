@@ -148,6 +148,42 @@
   margin-top: auto;
 }
 
+// --- SOLD OUT: штамп під назвою + темна неактивна кнопка ----------
+// Штамп 175×57, повернутий на 4.87°; картинка ширша за рамку й обрізається (як у Figma)
+.stamp {
+  position: absolute;
+  left: 18.6px;
+  top: 84px;
+  width: 175px;
+  height: 57px;
+  overflow: hidden;
+  transform: rotate(4.87deg);
+  pointer-events: none;
+
+  img {
+    position: absolute;
+    left: -8.87%;
+    top: -23.64%;
+    width: 116.57%;
+    max-width: none;
+    height: 158.18%;
+  }
+}
+
+.buy.soldOut {
+  background: #272727;
+  cursor: default;
+
+  &::before {
+    display: none;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #f3ecdf;
+  }
+}
+
 // --- ONLINE: бордова шапка + примітка ----------------------------
 .online {
   .card::before {

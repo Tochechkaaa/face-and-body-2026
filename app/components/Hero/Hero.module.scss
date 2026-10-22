@@ -3,10 +3,17 @@
 
 .hero {
   position: relative;
+  z-index: 1; // плашка sold out лягає поверх наступної секції
   min-height: 800px;
-  overflow: hidden;
   background: #1a0609;
   color: $color-white;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .bg {
@@ -210,6 +217,37 @@
   }
 }
 
+// Золота плашка «SOLD OUT · SIMPLE + VIP» (Figma: 262×158, справа по краю контейнера,
+// на 65px заходить за низ секції; на мобілці 204×123 над кнопкою)
+.stampLayer {
+  @include container;
+
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stamp {
+  position: absolute;
+  right: $container-pad-desktop;
+  bottom: -65px;
+  width: 262px;
+  height: 158px;
+  object-fit: cover; // у макеті прозорі поля картинки обрізані по ширині
+
+  @include tablet {
+    right: 40px;
+  }
+
+  @include mobile {
+    right: $container-pad;
+    top: 449px;
+    bottom: auto;
+    width: 204px;
+    height: 123px;
+  }
+}
+
 // --- Анімація появи (на завантаженні сторінки) -------------------
 // 1) рядки заголовка «виїжджають» з-під маски, 2) опис, 3) кнопка й бейдж.
 $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -263,11 +301,16 @@ $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   animation: fade-up 0.9s $ease-out 1.25s both;
 }
 
+.stamp {
+  animation: fade-up 0.9s $ease-out 1.4s both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mask > span,
   .meta,
   .text,
-  .actions {
+  .actions,
+  .stamp {
     animation: none;
   }
 

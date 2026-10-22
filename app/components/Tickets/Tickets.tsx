@@ -17,6 +17,7 @@ const TICKETS = [
       "Доступ до вечірньої програми After party",
     ],
     href: "#",
+    soldOut: true,
   },
   {
     name: "VIP",
@@ -32,6 +33,7 @@ const TICKETS = [
       "Доступ до вечірньої програми After party",
     ],
     href: "#",
+    soldOut: true,
   },
   {
     name: "Online",
@@ -80,6 +82,13 @@ export function Tickets() {
                     </div>
                   )}
 
+                  {t.soldOut && (
+                    <span className={styles.stamp}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/images/tickets/sold-out.png" alt="Sold out" width={820} height={360} />
+                    </span>
+                  )}
+
                   <p className={styles.price}>{t.price}</p>
 
                   <ul className={styles.features}>
@@ -88,9 +97,15 @@ export function Tickets() {
                     ))}
                   </ul>
 
-                  <Button href={t.href} variant="dark" block className={styles.buy}>
-                    Придбати квиток
-                  </Button>
+                  {t.soldOut ? (
+                    <Button variant="dark" block className={`${styles.buy} ${styles.soldOut}`} disabled>
+                      Sold out
+                    </Button>
+                  ) : (
+                    <Button href={t.href} variant="dark" block className={styles.buy}>
+                      Придбати квиток
+                    </Button>
+                  )}
                 </div>
               </div>
             </li>
