@@ -26,9 +26,6 @@ export function Expo() {
           <div className={styles.photo}>
             <Image src="/images/expo/photo.webp" alt="Шоу-програма FACE&BODY" fill sizes="342px" />
           </div>
-          <div className={styles.photoMobile}>
-            <Image src="/images/mobile/expo-photo.webp" alt="Шоу-програма FACE&BODY" fill sizes="184px" />
-          </div>
         </div>
       </div>
     </section>

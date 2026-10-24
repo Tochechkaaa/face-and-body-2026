@@ -21,8 +21,12 @@
   background: #3a0f18;
   color: #f8efe2;
 
+  // Фон на мобілці — готовий макет із фото та рамкою, тож картка тримає його пропорції,
+  // інакше на ширших телефонах cover обрізає низ і фото вилазить за рамку.
   @include mobile {
-    min-height: 719px;
+    container-type: inline-size;
+    min-height: 0;
+    aspect-ratio: 867 / 1814;
     border-radius: 13px;
   }
 }
@@ -53,9 +57,9 @@
   @include mobile {
     display: block;
     position: absolute;
-    left: 13px;
-    right: 13px;
-    top: 13px;
+    left: 3.6cqw;
+    right: 3.6cqw;
+    top: 3.6cqw;
     height: 277px;
     border-radius: 2px;
     background: linear-gradient(179.89deg, #160407 0.1%, rgba(57, 17, 24, 0) 160.84%);
@@ -71,7 +75,7 @@
   pointer-events: none;
 
   @include mobile {
-    inset: 13px;
+    inset: 3.6cqw; // збігається з рамкою, намальованою у фоні (31px з 867)
     border-radius: 11px;
   }
 }
@@ -172,23 +176,5 @@
 
   @include mobile {
     display: none;
-  }
-}
-
-.photoMobile {
-  display: none;
-
-  @include mobile {
-    display: block;
-    position: absolute;
-    left: 40px;
-    bottom: 21px;
-    width: 184px;
-    height: 140px;
-    transform: rotate(-6.71deg);
-
-    img {
-      object-fit: cover;
-    }
   }
 }

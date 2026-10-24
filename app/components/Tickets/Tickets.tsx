@@ -4,7 +4,7 @@ import { useInView } from "../../lib/useInView";
 import { Button } from "../Button/Button";
 import styles from "./Tickets.module.scss";
 
-// Посилання на оплату — замінити реальними, коли будуть.
+// Посилання на оплату (WayForPay).
 const TICKETS = [
   {
     name: "Simple",
@@ -45,7 +45,7 @@ const TICKETS = [
       "Сертифікат учасника",
       "Доступ до запису заходу (6 місяців)",
     ],
-    href: "#",
+    href: "https://secure.wayforpay.com/button/b797488510b8f",
   },
 ];
 
@@ -102,7 +102,14 @@ export function Tickets() {
                       Sold out
                     </Button>
                   ) : (
-                    <Button href={t.href} variant="dark" block className={styles.buy}>
+                    <Button
+                      href={t.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant="dark"
+                      block
+                      className={styles.buy}
+                    >
                       Придбати квиток
                     </Button>
                   )}

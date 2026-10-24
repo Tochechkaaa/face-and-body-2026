@@ -2,11 +2,9 @@ import Image from "next/image";
 import { NAV_ITEMS } from "../../lib/nav";
 import styles from "./Footer.module.scss";
 
-// TODO: підставити реальні посилання на соцмережі.
 const SOCIALS = [
-  { name: "Instagram", href: "#", icon: "/images/footer/instagram.svg" },
-  { name: "Facebook", href: "#", icon: "/images/footer/facebook.svg" },
-  { name: "Telegram", href: "#", icon: "/images/footer/telegram.svg" },
+  { name: "Instagram", href: "https://www.instagram.com/faceandbody.congress/", icon: "/images/footer/instagram.svg" },
+  { name: "Facebook", href: "https://www.facebook.com/estyderm/", icon: "/images/footer/facebook.svg" },
 ];
 
 export function Footer() {
@@ -70,7 +68,13 @@ export function Footer() {
 
         <div className={styles.copy}>
           <p>FACE&amp;BODY 2026. All rights reserved.</p>
-          <p>Made &amp; Developed by Vau.agency.</p>
+          <p>
+            Made &amp; Developed by{" "}
+            <a href="https://vau.agency/" className={styles.vau} target="_blank" rel="noopener noreferrer">
+              Vau.agency
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>

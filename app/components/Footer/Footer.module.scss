@@ -103,15 +103,9 @@
 .partner {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 31px;
   width: 503px;
   max-width: 100%;
-  text-align: right;
-
-  .heading {
-    width: 100%;
-  }
 
   @include mobile {
     align-items: center;
@@ -121,8 +115,7 @@
 }
 
 .partnerBody {
-  width: 486px;
-  max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -200,6 +193,14 @@
   line-height: 1.2;
   text-transform: uppercase;
   white-space: nowrap;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #712f3b;
+  }
+}
+
+.vau {
   transition: color 0.2s ease;
 
   &:hover {
